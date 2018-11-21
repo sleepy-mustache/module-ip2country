@@ -1,7 +1,7 @@
 <?php
 namespace Module\IP2Country;
 
-require_once(DIRBASE . '/modules/enabled/file-system-database/class.fsdb.php');
+require_once(DIRBASE . '/modules/file-system/class.fsdb.php');
 
 /**
  * Cross-references countries with IP addresses using a flat-file-database.
@@ -58,7 +58,7 @@ class Converter {
 	);
 
 	public function __construct() {
-		$this->db = new \FSDB\Connection('./ipData/');
+		$this->db = new \Module\FSDB\Connection(DIRBASE . '/modules/ip2country/ipData/');
 	}
 
 	public function getCountryCode($ip) {
