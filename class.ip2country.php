@@ -62,7 +62,7 @@ class Converter {
 	}
 
 	public function getCountryCode($ip) {
-		$dec = ip2long($ip);
+		$dec = sprintf('%u', ip2long($ip));
 		$data = $this->db->select($this->getTable($ip), "*");
 		foreach ($data as $row) {
 			if ($row->startIP <= $dec && $row->endIP >= $dec) {
@@ -74,7 +74,7 @@ class Converter {
 	}
 
 	public function getTable($ip) {
-		$dec = ip2long($ip);
+		$dec = sprintf('%u', ip2long($ip));
 
 		foreach ($this->upperRange as $limit) {
 			if ($dec >= $limit - 50000000 && $dec <= $limit) {
